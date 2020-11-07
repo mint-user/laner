@@ -1,0 +1,24 @@
+{
+  "name": "laner",
+  "version": "1.0.0",
+  "description": "flexible system",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/mint-user/laner.git"
+  },
+  "keywords": [
+    "laner",
+    "flex",
+    "custom"
+  ],
+  "author": "Xander Pronin <xanderpronin@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mint-user/laner/issues"
+  },
+  "homepage": "https://github.com/mint-user/laner#readme"
+}
