@@ -45,7 +45,7 @@ async function struct(){
     await FlexSubject.sync({force: true})
     await Workgroup.sync({force: true})
     await Field.sync({force: true})
-    await Account.create({ id: 1, login: "admin", password: "admin", workgroupId: 1, createdBy: 1})
+    await Account.create({ id: 1, login: "admin", password: "$2b$12$tSfD4oYOD7b3kXNzDFE60u4R/JlCUSxRIF9/aC4myFSHmz836p/fq", workgroupId: 1, createdBy: 1})
     await FlexSubject.create({ id: 1,  title: "Flex subject", alias: "flex_subject", flexType: "system", createdBy: 1})
     await FlexSubject.create({ id: 2,  title: "Account", alias: "account", flexType: "system", createdBy: 1})
     await FlexSubject.create({ id: 3,  title: "Workgroup", alias: "workgroup", flexType: "system", createdBy: 1})
@@ -85,12 +85,5 @@ struct()
 
 
 
-// Account.sync()
-//    .then(() => {
-//        Account.findOne()
-//    })
-
-// check admin existing
-// Account.findOne()
 
 module.exports = Account
