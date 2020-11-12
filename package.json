@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "server": "nodemon index.js",
-    "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
+    "dev": "concurrently --trace-warnings --kill-others-on-fail \"npm run server\" \"npm run client\"",
     "client": "npm run start --prefix=client"
   },
   "repository": {

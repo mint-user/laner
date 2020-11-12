@@ -6,6 +6,8 @@ const Account = require("../core_models");
 const router = Router()
 
 router.post('/sign_in', async (req, res) => {
+  // res.json({"fgdfg":"234"})
+  console.log(req.body)
   let errors = []
   if(!req.body.login){ errors.push("Login has not been received") }
   if (!req.body.password) { errors.push("Passwod has not been received") }
@@ -29,9 +31,10 @@ router.post('/sign_in', async (req, res) => {
       { id: acc.id },
       "secret",
       { expiresIn: '1h' }
-    )
-    res.status(200).json({token: token, accountId: acc.id})
-  } catch (error) {
+      )
+      res.status(200).json({token: token, accountId: acc.id})
+    } catch (error) {
+      console.log(error)
     res.status(500).json(`Something goes wrong: ${error}`)
   }
 })
