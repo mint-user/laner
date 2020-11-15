@@ -1,6 +1,6 @@
 import React from 'react'
-import {Switch, Route, Redirect} from 'react-router-dom'
-import {Login} from '../Login'
+import { Switch, Route, Redirect } from 'react-router-dom'
+import { Login } from '../Auth'
 
 export const useRoutes = isAutheticated => {
     if (isAutheticated){
@@ -17,7 +17,6 @@ export const useRoutes = isAutheticated => {
             <Switch>
                 <Route path="/sign_in" exact>
                     <Login />
-                    {/* <div>login</div> */}
                 </Route>
                 <Redirect to="sign_in" />
             </Switch> 

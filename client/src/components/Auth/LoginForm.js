@@ -1,47 +1,38 @@
-import {React, useState} from 'react'
+import React, { useState, useCallback } from 'react'
 import { Row, Col, Card, TextInput, Button } from 'react-materialize'
 import axios from "axios"
+import { AuthHook } from './auth.hook'
+import { Toast } from '../Toast'
 
 export const LoginForm = () => {
+
+    const { login } = AuthHook()
 
     const [loginValues, setLogin] = useState({login:"", password:""})
 
     axios.create({ responseType: "json" })
 
-    axios.interceptors.response.use(response => {
-        return response;
-    }, error => {
-        if (error.response.status === 401) {
-            //place your reentry code
-            // console.log(error.response)
-            return error.response;
+// WHEN CLICK LOGIN LOGIC
+    const loginHandler = async (event) => {
+        try {
+            let resp = await axios.post(
+                '/sign_in',
+                { login: loginValues.login, password: loginValues.password },
+                { headers: { 'Content-Type': 'application/json' } }
+            )
+            // Toast(`Welcome, ${loginValues.login}:::${resp.data.jwtToken}`);
+            // const TOKEN = resp.data.jwtToken
+            // setToken(TOKEN)
+            // localStorage.setItem('jwtToken', TOKEN)
+            login(resp.data.jwtToken)
+        } catch (error) {
+            Toast(error.response.data.errors, 'error')
         }
-            return error;
-    });
-
-    const loginHandler = (event) => {
-        let userData = axios.post('/sign_in', {
-            login: loginValues.login,
-            password: loginValues.password
-        })
-        .then(resp => {
-            console.log(`ANSWER:`, resp)
-            if(resp.status===401){
-                console.error(resp.data)
-            } else {
-                console.log('norm')
-            }
-        })
-        .catch(error => {
-            let errObj = JSON.parse(JSON.stringify(error))
-            console.log("error.response", error.response)
-            console.error(`ANSWER:`, errObj)
-        })
     }
 
+// TEMPLATE
     return (
         <div className="container">
-            <p>{JSON.stringify(loginValues)}</p>
             <Row>
                 <Col s={12} m={4} offset={'m4'}>
                     <Card>

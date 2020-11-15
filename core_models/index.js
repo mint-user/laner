@@ -80,7 +80,7 @@ async function struct(){
     await Field.create({title: "Type",  alias: "type", flexObjectId: 3, type: "String", flexType: "system", createdBy: 1})
 }
 
-struct()
+// struct()
 
 
 

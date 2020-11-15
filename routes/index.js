@@ -38,7 +38,7 @@ function sendAnswer(res, errors){
     res
       .set('content-type','application/json')
       .status(200)
-      .json({token: token, accountId: acc.id})
+      .json({jwtToken: token, accountId: acc.id})
   }
 }
 
