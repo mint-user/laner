@@ -10,7 +10,7 @@ export const AuthHook = () => {
     const login = useCallback( (jwtToken) => {
         setToken(jwtToken)
         localStorage.setItem(STORAGE_NAME, jwtToken)
-        Toast(`Welcome:::${jwtToken}`)
+        Toast(`Welcome`)
     }, [])
 
     const logout = useCallback(() => {

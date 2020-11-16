@@ -5,9 +5,12 @@ import { AuthContext } from './context'
 
 function App() {
   const { token, login, logout } = AuthHook()
-  const routes = useRoutes(!!token)
+  const isAutheticated = !!token
+  const routes = useRoutes(isAutheticated)
   return (
-    <AuthContext.Provider value={{ token, login, logout }}>
+    <AuthContext.Provider value={{
+      token, login, logout, isAutheticated
+    }}>
       <BrowserRouter>
         {routes}
       </BrowserRouter>

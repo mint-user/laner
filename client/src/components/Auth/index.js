@@ -5,7 +5,7 @@ import {LoginForm} from './LoginForm'
 export const Login = () => {
   return (
     <div>
-      <LanerNavbar />
+      {/* <LanerNavbar /> */}
       <LoginForm />
     </div>
   );

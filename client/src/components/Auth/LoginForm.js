@@ -1,13 +1,11 @@
-import React, { useState, useCallback } from 'react'
+import React, { useState, useCallback, useContext } from 'react'
 import { Row, Col, Card, TextInput, Button } from 'react-materialize'
 import axios from "axios"
-import { AuthHook } from './auth.hook'
+import { AuthContext } from '../../context/index'
 import { Toast } from '../Toast'
 
 export const LoginForm = () => {
-
-    const { login } = AuthHook()
-
+    const auth = useContext(AuthContext)
     const [loginValues, setLogin] = useState({login:"", password:""})
 
     axios.create({ responseType: "json" })
@@ -20,11 +18,11 @@ export const LoginForm = () => {
                 { login: loginValues.login, password: loginValues.password },
                 { headers: { 'Content-Type': 'application/json' } }
             )
-            // Toast(`Welcome, ${loginValues.login}:::${resp.data.jwtToken}`);
-            // const TOKEN = resp.data.jwtToken
-            // setToken(TOKEN)
-            // localStorage.setItem('jwtToken', TOKEN)
-            login(resp.data.jwtToken)
+            // // Toast(`Welcome, ${loginValues.login}:::${resp.data.jwtToken}`);
+            // // const TOKEN = resp.data.jwtToken
+            // // setToken(TOKEN)
+            // // localStorage.setItem('jwtToken', TOKEN)
+            auth.login(resp.data.jwtToken)
         } catch (error) {
             Toast(error.response.data.errors, 'error')
         }
